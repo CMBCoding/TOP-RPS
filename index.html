@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+    function getComputerChoice() {
+        let result = Math.floor(Math.random() * 3);
+        if (result === 0) {
+            console.log("CPU picks rock.");
+            return "rock";
+        } else if (result === 2) {
+            console.log("CPU picks paper.");
+            return "paper";
+        } else {
+            console.log("CPU picks scissors.");
+            return "scissors";
+        }
+    }
+    function getHumanChoice() {
+        let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
+        if (result.length === 4) {
+            console.log("You pick rock.");
+            return "rock";
+        } else if (result.length === 5) {
+            console.log("You pick paper.");
+            return "paper";
+        } else if (result.length === 8) {
+            console.log("You pick scissors.");
+            return "scissors";
+        }
+    }
+
+    /*
+        function getHumanChoice() {
+        let result = prompt("Please enter 'Rock', 'Paper', or 'Scissors'.");
+        if (result === "Rock" ||result === "rock") {
+            humanChoice = "rock";
+            console.log("You pick Rock.");
+            return humanChoice;
+        } else if (result === "Paper" || result === "paper") {
+            humanChoice = "paper";
+            console.log("You pick Paper.");
+            return humanChoice;
+        } else if (result === "Scissors" || result === "scissors") {
+            humanChoice = "scissors";
+            console.log("You pick Scissors.");
+            return humanChoice; 
+        }
+    }
+
+    */
+
+    function playRound(humanChoice, computerChoice) {
+        humanChoice = getHumanChoice();
+        humanChoice = humanChoice.toLowerCase();
+        computerChoice = getComputerChoice();
+        if (humanChoice === computerChoice) {
+                console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
+            } else if (
+                (humanChoice === "rock" & computerChoice === "paper") || 
+                (humanChoice === "scissors" & computerChoice === "rock") ||
+                (humanChoice === "paper" & computerChoice === "scissors")
+            ) {
+                computerScore = computerScore + 1;
+                console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
+                return `CPU score is: ${computerScore}`;
+            } else if (
+                (computerChoice === "rock" & humanChoice === "paper") || 
+                (computerChoice === "scissors" & humanChoice === "rock") ||
+                (computerChoice === "paper" & humanChoice === "scissors")
+            ) {
+                humanScore = humanScore + 1;
+                console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
+                return `Your score is: ${humanScore}.`;
+            }
+    }
+
+    function playGame() {
+        humanScore = 0;
+        computerScore = 0;
+        playRound();
+    }
+</script>
+<body>
+    
+</body>
+</html>
