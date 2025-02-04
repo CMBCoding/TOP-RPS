@@ -4,135 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <div class="box">
+    <h1>Rock, Paper, Scissors</h1>
+    <div id="box">
         <button id="one" class="btn">Round One</button>
         <button id="two" class="btn">Round Two</button>
         <button id="three" class="btn">Round Three</button>
-    </div>
-    <div class="display">
-        <p id="result-one"></p>
-        <p id="result-two"></p>
-        <p id="result-three"></p>
+
+        <div id="display">
+            <p id="result-one" class="result">Lorem</p>
+            <p id="result-two" class="result">Lorem</p>
+            <p id="result-three" class="result">Lorem</p>
+        </div>
     </div>
 </body>
-<script>
-
-    function getComputerChoice() {
-        let result = Math.floor(Math.random() * 3);
-        if (result === 0) {
-            console.log("CPU picks rock.");
-            return "rock";
-        } else if (result === 2) {
-            console.log("CPU picks paper.");
-            return "paper";
-        } else {
-            console.log("CPU picks scissors.");
-            return "scissors";
-        }
-    }
-    function getHumanChoice() {
-        let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
-        if (result.length === 4) {
-            console.log("You pick rock.");
-            return "rock";
-        } else if (result.length === 5) {
-            console.log("You pick paper.");
-            return "paper";
-        } else if (result.length === 8) {
-            console.log("You pick scissors.");
-            return "scissors";
-        }
-    }
-
-    /*
-        function getHumanChoice() {
-        let result = prompt("Please enter 'Rock', 'Paper', or 'Scissors'.");
-        if (result === "Rock" ||result === "rock") {
-            humanChoice = "rock";
-            console.log("You pick Rock.");
-            return humanChoice;
-        } else if (result === "Paper" || result === "paper") {
-            humanChoice = "paper";
-            console.log("You pick Paper.");
-            return humanChoice;
-        } else if (result === "Scissors" || result === "scissors") {
-            humanChoice = "scissors";
-            console.log("You pick Scissors.");
-            return humanChoice; 
-        }
-    }
-
-    */
-
-    // function playRound(humanChoice, computerChoice) {
-    //     humanChoice = getHumanChoice();
-    //     humanChoice = humanChoice.toLowerCase();
-    //     computerChoice = getComputerChoice();
-    //     if (humanChoice === computerChoice) {
-    //             console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
-    //         } else if (
-    //             (humanChoice === "rock" & computerChoice === "paper") || 
-    //             (humanChoice === "scissors" & computerChoice === "rock") ||
-    //             (humanChoice === "paper" & computerChoice === "scissors")
-    //         ) {
-    //             computerScore = computerScore + 1;
-    //             console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-    //             return `CPU score is: ${computerScore}`;
-    //         } else if (
-    //             (computerChoice === "rock" & humanChoice === "paper") || 
-    //             (computerChoice === "scissors" & humanChoice === "rock") ||
-    //             (computerChoice === "paper" & humanChoice === "scissors")
-    //         ) {
-    //             humanScore = humanScore + 1;
-    //             console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
-    //             return `Your score is: ${humanScore}.`;
-    //         }
-    // }
-
-    function playGame() {
-        let humanScore = 0;
-        let computerScore = 0;
-        for (let i = 0; i < 5; i++) {
-        playRound();
-        function playRound(humanChoice, computerChoice) {
-        humanChoice = getHumanChoice();
-        humanChoice = humanChoice.toLowerCase();
-        computerChoice = getComputerChoice();
-        if (humanChoice === computerChoice) {
-                console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
-            } else if (
-                (humanChoice === "rock" & computerChoice === "paper") || 
-                (humanChoice === "scissors" & computerChoice === "rock") ||
-                (humanChoice === "paper" & computerChoice === "scissors")
-            ) {
-                computerScore = computerScore + 1
-                console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-                return console.log(`CPU score is: ${computerScore}`);
-                return computerScore++;
-            } else if (
-                (computerChoice === "rock" & humanChoice === "paper") || 
-                (computerChoice === "scissors" & humanChoice === "rock") ||
-                (computerChoice === "paper" & humanChoice === "scissors")
-            ) {
-                humanScore = humanScore + 1
-                console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
-                return console.log(`Your score is: ${humanScore}`);
-                return humanScore++;
-            }
-    }
-        }
-        if (humanScore > computerScore) {
-            console.log(`You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`);
-        } else if (humanScore < computerScore) {
-            console.log(`You've won! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
-        } else {
-            console.log(`It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
-        }
-    }
-</script>
+<script src="script.js"></script>
 <body>
     
 </body>
