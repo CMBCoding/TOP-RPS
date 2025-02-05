@@ -1,15 +1,22 @@
 
 const btns = document.querySelectorAll(".btn");
-const playerPoints = document.querySelector("#result-one");
-const CPUPoints = document.querySelector("#result-two");
-const totalPoints = document.querySelector("#result-three")
+const display = document.querySelector("#display");
+const runningTotal = document.querySelector("#running-total");
+const final = document.querySelector("#final");
+
+/*const roundOne = document.querySelector("#result-one");
+const roundTwo = document.querySelector("#result-two");
+const roundThree = document.querySelector("#result-three");
+const roundFour = document.querySelector("#result-four");
+const roundFive = document.querySelector("result-five");*/
 
 /*Next step it to swap the console logs for the scores to display the 
 results of the rounds in the <p> elements within the display box*/
 
 btns.forEach((btn) => 
     btn.addEventListener("click", () => {
-        playGame();
+        let playerChoice = btns.id;
+        playGame(playerChoice);
     })
 )
 
@@ -26,19 +33,22 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-function getHumanChoice() {
-    let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
-    if (result.length === 4) {
-        console.log("You pick rock.");
-        return "rock";
-    } else if (result.length === 5) {
-        console.log("You pick paper.");
-        return "paper";
-    } else if (result.length === 8) {
-        console.log("You pick scissors.");
-        return "scissors";
-    }
-}
+
+/* With buttons and event handler now taking the player's choice,　
+this function is obsolete*/
+// function getHumanChoice() {
+//     let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
+//     if (result.length === 4) {
+//         console.log("You pick rock.");
+//         return "rock";
+//     } else if (result.length === 5) {
+//         console.log("You pick paper.");
+//         return "paper";
+//     } else if (result.length === 8) {
+//         console.log("You pick scissors.");
+//         return "scissors";
+//     }
+// }
 
 function playGame() {
     let humanScore = 0;
@@ -46,18 +56,22 @@ function playGame() {
     // for (let i = 0; i < 5; i++) {
     playRound();
     function playRound(humanChoice, computerChoice) {
-    humanChoice = getHumanChoice();
-    humanChoice = humanChoice.toLowerCase();
+    humanChoice = playerChoice;
     computerChoice = getComputerChoice();
     if (humanChoice === computerChoice) {
-            console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
+            let roundResult = document.createElement("p");
+            roundResult.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
+            display.appendChild(roundOne);
+            // console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
         } else if (
             (humanChoice === "rock" & computerChoice === "paper") || 
             (humanChoice === "scissors" & computerChoice === "rock") ||
             (humanChoice === "paper" & computerChoice === "scissors")
         ) {
             computerScore = computerScore + 1
-            console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
+            let roundResult = document.createElement("p");
+            roundResult.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
+            // console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
             return console.log(`CPU score is: ${computerScore}`);
             return computerScore++;
         } else if (
@@ -73,10 +87,13 @@ function playGame() {
 }
     // }
     if (humanScore > computerScore) {
-        console.log(`You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`);
+        final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
+        // console.log(`You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`);
     } else if (humanScore < computerScore) {
-        console.log(`You've won! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
+        final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
+        // console.log(`You've won! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
     } else {
-        console.log(`It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
+        final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
+        // console.log(`It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
     }
 }

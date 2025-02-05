@@ -38,12 +38,19 @@ div {
     flex-direction: row;
     justify-content: space-evenly;
     background-color: aliceblue;
-    border: inset 5px silver;
+    border: inset 5px whitesmoke;
     border-radius: 20px;
     font-weight: bolder;
     margin: 10px;
     padding: 10px;
 }
+
+#rock {
+    border: inset 5px black;
+};
+#paper {
+    border: inset 5px ivory;
+};
 
 #display {
     display: flex;
