@@ -16,7 +16,7 @@ results of the rounds in the <p> elements within the display box*/
 btns.forEach((btn) => 
     btn.addEventListener("click", () => {
         let playerChoice = btns.id;
-        playGame(playerChoice);
+        playGame();
     })
 )
 
@@ -36,19 +36,19 @@ function getComputerChoice() {
 
 /* With buttons and event handler now taking the player's choice,　
 this function is obsolete*/
-// function getHumanChoice() {
-//     let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
-//     if (result.length === 4) {
-//         console.log("You pick rock.");
-//         return "rock";
-//     } else if (result.length === 5) {
-//         console.log("You pick paper.");
-//         return "paper";
-//     } else if (result.length === 8) {
-//         console.log("You pick scissors.");
-//         return "scissors";
-//     }
-// }
+function getHumanChoice() {
+    let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
+    if (result.length === 4) {
+        console.log("You pick rock.");
+        return "rock";
+    } else if (result.length === 5) {
+        console.log("You pick paper.");
+        return "paper";
+    } else if (result.length === 8) {
+        console.log("You pick scissors.");
+        return "scissors";
+    }
+}
 
 function playGame() {
     let humanScore = 0;
