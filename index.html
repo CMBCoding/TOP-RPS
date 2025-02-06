@@ -10,19 +10,26 @@
     <h1 id="title">Rock, Paper, Scissors</h1>
     <div id="box">
         <div id="panel">
-            <button id="rock" class="btn">Rock</button>
-            <button id="paper" class="btn">Paper</button>
-            <button id="scissors" class="btn">Scissors</button>
+            <button id="rock" class="btn" value="rock">Rock</button>
+            <button id="paper" class="btn" value="paper">Paper</button>
+            <button id="scissors" class="btn" value="scissors">Scissors</button>
         </div>
 
         <div id="display">
-            <!-- <p id="result-one" class="result">Lorem</p>
-            <p id="result-two" class="result">Lorem</p>
-            <p id="result-three" class="result">Lorem</p>
-            <p id="result-four" class="result">Lorem</p>
-            <p id="result-five" class="result">Lorem</p> -->
-            <p id="running-total"></p>
-            <p id-="final"></p>
+            <table>
+                <tr>
+                    <th id="player-score">Player Score: 0</th>
+                    <th id="CPU-score">CPU Score: 0</th>
+                </tr>
+                <tr>
+                    <td id="player-choice"></td>
+                    <td id="CPU-choice"></td>
+                    <td id="outcome"></td>
+                </tr>
+                <tr>
+                    <td id="final"></td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>

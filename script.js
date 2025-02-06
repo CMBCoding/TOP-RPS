@@ -1,7 +1,11 @@
 
 const btns = document.querySelectorAll(".btn");
 const display = document.querySelector("#display");
-const runningTotal = document.querySelector("#running-total");
+const playerPick = document.querySelector("#player-choice");
+const CPUPick = document.querySelector("#CPU-choice");
+const outcome = document.querySelector("#outcome");
+const playerPoints = document.querySelector("#player-score");
+const CPUPoints = document.querySelector("#CPU-score")
 const final = document.querySelector("#final");
 
 /*const roundOne = document.querySelector("#result-one");
@@ -13,9 +17,11 @@ const roundFive = document.querySelector("result-five");*/
 /*Next step it to swap the console logs for the scores to display the 
 results of the rounds in the <p> elements within the display box*/
 
+let playerChoice;
+
 btns.forEach((btn) => 
     btn.addEventListener("click", () => {
-        let playerChoice = btns.id;
+        playerChoice = btns.value;
         playGame();
     })
 )
@@ -36,32 +42,34 @@ function getComputerChoice() {
 
 /* With buttons and event handler now taking the player's choice,　
 this function is obsolete*/
-function getHumanChoice() {
-    let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
-    if (result.length === 4) {
-        console.log("You pick rock.");
-        return "rock";
-    } else if (result.length === 5) {
-        console.log("You pick paper.");
-        return "paper";
-    } else if (result.length === 8) {
-        console.log("You pick scissors.");
-        return "scissors";
-    }
-}
+// function getHumanChoice() {
+//     let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
+//     if (result.length === 4) {
+//         console.log("You pick rock.");
+//         return "rock";
+//     } else if (result.length === 5) {
+//         console.log("You pick paper.");
+//         return "paper";
+//     } else if (result.length === 8) {
+//         console.log("You pick scissors.");
+//         return "scissors";
+//     }
+// }
 
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
+    // playerPoints = humanScore.innerText;
+    // CPUPoints = computerScore.innerText;
     // for (let i = 0; i < 5; i++) {
     playRound();
     function playRound(humanChoice, computerChoice) {
     humanChoice = playerChoice;
     computerChoice = getComputerChoice();
     if (humanChoice === computerChoice) {
-            let roundResult = document.createElement("p");
-            roundResult.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
-            display.appendChild(roundOne);
+            // let roundResult = document.createElement("p");
+            outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
+            // display.appendChild(roundResult);
             // console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
         } else if (
             (humanChoice === "rock" & computerChoice === "paper") || 
@@ -69,20 +77,26 @@ function playGame() {
             (humanChoice === "paper" & computerChoice === "scissors")
         ) {
             computerScore = computerScore + 1
-            let roundResult = document.createElement("p");
-            roundResult.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
-            // console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-            return console.log(`CPU score is: ${computerScore}`);
+            /* let roundResult = document.createElement("p"); */
+            outcome.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
+            CPUPoints.innerText = `The Computer score is: ${computerScore}`;
             return computerScore++;
+            // console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
+            // return console.log(`CPU score is: ${computerScore}`);
+            // return computerScore++;
         } else if (
             (computerChoice === "rock" & humanChoice === "paper") || 
             (computerChoice === "scissors" & humanChoice === "rock") ||
             (computerChoice === "paper" & humanChoice === "scissors")
         ) {
             humanScore = humanScore + 1
-            console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
-            return console.log(`Your score is: ${humanScore}`);
+            // let roundResult = document.createElement("p");
+            playerPoints.innerText = `Your score is: ${humanScore}`;
+            outcome.innerText = `You win, ${humanChoice} beats ${computerChoice}!`;
             return humanScore++;
+            // console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
+            // return console.log();
+            // return humanScore++;
         }
 }
     // }
