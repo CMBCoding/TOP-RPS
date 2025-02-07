@@ -21,7 +21,7 @@ let playerChoice;
 
 btns.forEach((btn) => 
     btn.addEventListener("click", () => {
-        playerChoice = btns.getAttribute(choice);
+        playerChoice = btns.getAttribute("choice");
         playGame();
     })
 )
