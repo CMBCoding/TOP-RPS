@@ -21,12 +21,13 @@ buttonPaper.addEventListener("click", () => {
     humanChoice = "paper";
     console.log(humanChoice);
     playerPick.innerText = "You pick Paper";
-    playGame();
+    playRound();
 });
 buttonScissors.addEventListener("click", () => {
     humanChoice = "scissors";
     console.log(humanChoice);
-    playGame();
+    playerPick.innerText = "You pick Scissors";
+    playRound();
 })
 
 // btns.forEach((btn) => 
