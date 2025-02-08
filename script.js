@@ -1,6 +1,7 @@
-const buttonRock = document.querySelector("#rock");
-const buttonPaper = document.querySelector("#paper");
-const buttonScissors = document.querySelector("#scissors");
+// const buttonRock = document.querySelector("#rock");
+// const buttonPaper = document.querySelector("#paper");
+// const buttonScissors = document.querySelector("#scissors");
+const btns = document.querySelectorAll("button");
 const display = document.querySelector("#display");
 const playerPick = document.querySelector("#player-choice")
 const CPUPick = document.querySelector("#CPU-choice");
@@ -9,26 +10,37 @@ const playerPoints = document.querySelector("#player-score");
 const CPUPoints = document.querySelector("#CPU-score")
 const final = document.querySelector("#final");
 
-let humanChoice;
+// let humanChoice;
 
-buttonRock.addEventListener("click", () => {
-    humanChoice = "rock";
-    playerPick.innerText = "You pick Rock";
-    console.log(humanChoice);
-    playGame();
-});
-buttonPaper.addEventListener("click", () => {
-    humanChoice = "paper";
-    console.log(humanChoice);
-    playerPick.innerText = "You pick Paper";
-    playRound();
-});
-buttonScissors.addEventListener("click", () => {
-    humanChoice = "scissors";
-    console.log(humanChoice);
-    playerPick.innerText = "You pick Scissors";
-    playRound();
+// buttonRock.addEventListener("click", () => {
+//     humanChoice = "rock";
+//     playerPick.innerText = "You pick Rock";
+//     console.log(humanChoice);
+//     playGame();
+// });
+// buttonPaper.addEventListener("click", () => {
+//     humanChoice = "paper";
+//     console.log(humanChoice);
+//     playerPick.innerText = "You pick Paper";
+//     playRound();
+// });
+// buttonScissors.addEventListener("click", () => {
+//     humanChoice = "scissors";
+//     console.log(humanChoice);
+//     playerPick.innerText = "You pick Scissors";
+//     playRound();
+// })
+
+/*For each button, add an event listener for a click*/
+
+btns.forEach((btn) => 
+    btn.addEventListener("click"), () => {
+        console.log(btns.id)
+        if (btns.id) {
+            playRound(btns.id)
+        }
 })
+
 
 // btns.forEach((btn) => 
 //     btn.addEventListener("click", () => {
@@ -78,8 +90,7 @@ function playGame() {
     playRound();
     function playRound(humanChoice, computerChoice) {
     computerChoice = getComputerChoice();
-    console.log(humanChoice);
-    if (humanChoice === computerChoice) {
+    if (btn.id === computerChoice) {
             outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
         } else if (
             (humanChoice === "rock" & computerChoice === "paper") || 
