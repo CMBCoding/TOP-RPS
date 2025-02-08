@@ -9,25 +9,23 @@ const playerPoints = document.querySelector("#player-score");
 const CPUPoints = document.querySelector("#CPU-score")
 const final = document.querySelector("#final");
 
-let humanChoice;
-
 buttonRock.addEventListener("click", () => {
-    humanChoice = "rock";
+    choice = buttonRock.id;
     playerPick.innerText = "You pick Rock";
-    console.log(humanChoice);
-    playGame();
+    console.log(choice);
+    playGame(choice);
 });
 buttonPaper.addEventListener("click", () => {
-    humanChoice = "paper";
-    console.log(humanChoice);
+    choice = buttonPaper.id;
+    console.log(choice);
     playerPick.innerText = "You pick Paper";
-    playRound();
+    playGame(choice);
 });
 buttonScissors.addEventListener("click", () => {
-    humanChoice = "scissors";
-    console.log(humanChoice);
+    humanChoice = buttonScissors.id;
+    console.log(choice);
     playerPick.innerText = "You pick Scissors";
-    playRound();
+    playGame(choice);
 })
 
 // btns.forEach((btn) => 
@@ -78,6 +76,7 @@ function playGame() {
     playRound();
     function playRound(humanChoice, computerChoice) {
     computerChoice = getComputerChoice();
+    humanChoice = choice;
     console.log(humanChoice);
     if (humanChoice === computerChoice) {
             outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
