@@ -1,41 +1,56 @@
-
-const btns = document.querySelectorAll(".btn");
+const buttonRock = document.querySelector("#rock");
+const buttonPaper = document.querySelector("#paper");
+const buttonScissors = document.querySelector("#scissors");
 const display = document.querySelector("#display");
-const playerPick = document.querySelector("#player-choice");
+const playerPick = document.querySelector("#player-choice")
 const CPUPick = document.querySelector("#CPU-choice");
 const outcome = document.querySelector("#outcome");
 const playerPoints = document.querySelector("#player-score");
 const CPUPoints = document.querySelector("#CPU-score")
 const final = document.querySelector("#final");
 
-/*const roundOne = document.querySelector("#result-one");
-const roundTwo = document.querySelector("#result-two");
-const roundThree = document.querySelector("#result-three");
-const roundFour = document.querySelector("#result-four");
-const roundFive = document.querySelector("result-five");*/
+let humanChoice;
 
-/*Next step it to swap the console logs for the scores to display the 
-results of the rounds in the <p> elements within the display box*/
+buttonRock.addEventListener("click", () => {
+    humanChoice = "rock";
+    playerPick.innerText = "You pick Rock";
+    console.log(humanChoice);
+    playGame();
+});
+buttonPaper.addEventListener("click", () => {
+    humanChoice = "paper";
+    console.log(humanChoice);
+    playerPick.innerText = "You pick Paper";
+    playGame();
+});
+buttonScissors.addEventListener("click", () => {
+    humanChoice = "scissors";
+    console.log(humanChoice);
+    playGame();
+})
 
-let playerChoice;
+// btns.forEach((btn) => 
+//     btn.addEventListener("click", () => {
+//         btns.values();
+//         playGame();
+//     })
+// )
 
-btns.forEach((btn) => 
-    btn.addEventListener("click", () => {
-        playerChoice = btns.getAttribute("choice");
-        playGame();
-    })
-)
+// playerRock.addEventListener("click", () => {
+//     playerChoice === "rock";
+// })
+
 
 function getComputerChoice() {
     let result = Math.floor(Math.random() * 3);
     if (result === 0) {
-        console.log("CPU picks rock.");
+        CPUPick.innerText = "CPU picks Rock.";
         return "rock";
     } else if (result === 2) {
-        console.log("CPU picks paper.");
+        CPUPick.innerText = "CPU picks Paper.";
         return "paper";
     } else {
-        console.log("CPU picks scissors.");
+        CPUPick.innerText = "CPU picks Scissors.";
         return "scissors";
     }
 }
@@ -59,55 +74,39 @@ this function is obsolete*/
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
-    // playerPoints = humanScore.innerText;
-    // CPUPoints = computerScore.innerText;
-    // for (let i = 0; i < 5; i++) {
     playRound();
     function playRound(humanChoice, computerChoice) {
-    humanChoice = playerChoice;
     computerChoice = getComputerChoice();
+    console.log(humanChoice);
     if (humanChoice === computerChoice) {
-            // let roundResult = document.createElement("p");
             outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
-            // display.appendChild(roundResult);
-            // console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
         } else if (
             (humanChoice === "rock" & computerChoice === "paper") || 
             (humanChoice === "scissors" & computerChoice === "rock") ||
             (humanChoice === "paper" & computerChoice === "scissors")
         ) {
             computerScore = computerScore + 1
-            /* let roundResult = document.createElement("p"); */
             outcome.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
-            CPUPoints.innerText = `The Computer score is: ${computerScore}`;
+            CPUPoints.innerText = `The CPU score is: ${computerScore}`;
             return computerScore++;
-            // console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-            // return console.log(`CPU score is: ${computerScore}`);
-            // return computerScore++;
         } else if (
             (computerChoice === "rock" & humanChoice === "paper") || 
             (computerChoice === "scissors" & humanChoice === "rock") ||
             (computerChoice === "paper" & humanChoice === "scissors")
         ) {
             humanScore = humanScore + 1
-            // let roundResult = document.createElement("p");
-            playerPoints.innerText = `Your score is: ${humanScore}`;
+            playerPoints.innerText = `Player score is: ${humanScore}`;
             outcome.innerText = `You win, ${humanChoice} beats ${computerChoice}!`;
             return humanScore++;
-            // console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
-            // return console.log();
-            // return humanScore++;
+
         }
 }
-    // }
+
     if (humanScore > computerScore) {
         final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
-        // console.log(`You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`);
     } else if (humanScore < computerScore) {
         final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
-        // console.log(`You've won! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
     } else {
         final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
-        // console.log(`It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
     }
 }

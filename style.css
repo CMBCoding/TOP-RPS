@@ -60,13 +60,27 @@ div {
 #rock {
     border: inset 5px black;
 }
-
+#rock:active {
+    background-color: black;
+    color: ivory;
+    border: inset 5px  ivory;
+}
 #paper {
     border: inset 5px ivory;
+}
+#paper:active {
+    background-color: ivory;
+    color: #635147;
+    border: inset 5px #635147;
 }
 
 #scissors {
     border: inset 5px navy;
+}
+#scissors:active {
+    background-color: navy;
+    color: silver;
+    border: inset 5px silver;
 }
 
 #display {
@@ -77,6 +91,7 @@ div {
     border: inset 5px goldenrod;
     border-radius: 5px;
     margin: 10px 0px;
+    padding: 5px;
     width: 100%;
     height: 50%;
 }
@@ -84,4 +99,23 @@ div {
 .result {
     display: flex;
     color: goldenrod;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+}
+table,td {
+    border: 1px solid black;
+    text-align: center;
+}
+th {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#final {
+    text-align: left;
+    padding: 0px 10px;
+    font-weight: bold;
 }
