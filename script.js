@@ -8,37 +8,27 @@ const outcome = document.querySelector("#outcome");
 const playerPoints = document.querySelector("#player-score");
 const CPUPoints = document.querySelector("#CPU-score")
 const final = document.querySelector("#final");
+const reset = document.querySelector("#reset");
+
+let round = 1;
+let humanScore = 0;
+let computerScore = 0;
 
 buttonRock.addEventListener("click", () => {
     choice = buttonRock.id;
-    playerPick.innerText = "You pick Rock";
-    console.log(choice);
+    playerPick.innerText = "You pick Rock.";
     playGame(choice);
 });
 buttonPaper.addEventListener("click", () => {
     choice = buttonPaper.id;
-    console.log(choice);
-    playerPick.innerText = "You pick Paper";
+    playerPick.innerText = "You pick Paper.";
     playGame(choice);
 });
 buttonScissors.addEventListener("click", () => {
-    humanChoice = buttonScissors.id;
-    console.log(choice);
-    playerPick.innerText = "You pick Scissors";
+    choice = buttonScissors.id;
+    playerPick.innerText = "You pick Scissors.";
     playGame(choice);
-})
-
-// btns.forEach((btn) => 
-//     btn.addEventListener("click", () => {
-//         btns.values();
-//         playGame();
-//     })
-// )
-
-// playerRock.addEventListener("click", () => {
-//     playerChoice === "rock";
-// })
-
+});
 
 function getComputerChoice() {
     let result = Math.floor(Math.random() * 3);
@@ -54,59 +44,69 @@ function getComputerChoice() {
     }
 }
 
-/* With buttons and event handler now taking the player's choice,　
-this function is obsolete*/
-// function getHumanChoice() {
-//     let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
-//     if (result.length === 4) {
-//         console.log("You pick rock.");
-//         return "rock";
-//     } else if (result.length === 5) {
-//         console.log("You pick paper.");
-//         return "paper";
-//     } else if (result.length === 8) {
-//         console.log("You pick scissors.");
-//         return "scissors";
-//     }
-// }
+reset.addEventListener("click", resetGame);
 
 function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
+
+    if (round < 5) {    
     playRound();
     function playRound(humanChoice, computerChoice) {
     computerChoice = getComputerChoice();
     humanChoice = choice;
-    console.log(humanChoice);
     if (humanChoice === computerChoice) {
-            outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`;
+            outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`
+            final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
+            return round++;
         } else if (
             (humanChoice === "rock" & computerChoice === "paper") || 
             (humanChoice === "scissors" & computerChoice === "rock") ||
             (humanChoice === "paper" & computerChoice === "scissors")
         ) {
-            computerScore = computerScore + 1
+            computerScore += 1
             outcome.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
-            CPUPoints.innerText = `The CPU score is: ${computerScore}`;
-            return computerScore++;
+            CPUPoints.innerText = `CPU score: ${computerScore}`;
+            final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
+            return round++ && computerScore;
         } else if (
             (computerChoice === "rock" & humanChoice === "paper") || 
             (computerChoice === "scissors" & humanChoice === "rock") ||
             (computerChoice === "paper" & humanChoice === "scissors")
         ) {
-            humanScore = humanScore + 1
-            playerPoints.innerText = `Player score is: ${humanScore}`;
+            humanScore += 1
+            playerPoints.innerText = `Player score: ${humanScore}`;
             outcome.innerText = `You win, ${humanChoice} beats ${computerChoice}!`;
-            return humanScore++;
+            final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
+            return round++ & humanScore;
 
         }
+    if (round === 5) {
+        if (humanScore > computerScore) {
+            final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
+        } else if (humanScore < computerScore) {
+            final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
+        } else {
+            final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
+        }
+        }
 }
+    } else if (round === 5)
+        if (humanScore > computerScore) {
+            final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
+        } else if (humanScore < computerScore) {
+            final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
+        } else {
+            final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
+        }
+};
 
-    if (humanScore > computerScore) {
-        final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
-    } else if (humanScore < computerScore) {
-        final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
-    } else {
-        final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
-    }
-}
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    round = 1;
+    playerPoints.innerText = "Player Score: 0";
+    CPUPoints.innerText = "CPU Score: 0"
+    playerPick.innerText = " ";
+    CPUPick.innerText = " ";
+    outcome.innerText = " ";
+    final.innerHTML = `The best out of 5 rounds wins. Are you ready?`;
+};

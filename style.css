@@ -18,18 +18,19 @@ body {
 }
 
 div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 500px;
-    height: 350px;
-    margin: auto;
-    padding: 20px;
+display: flex;
 }
 
 #box {
     border: groove ivory 5px; 
     background-color: #282A35;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 600px;
+    height: 350px;
+    margin: auto;
+    padding: 5px 10px;
 }
 
 #panel {
@@ -40,7 +41,7 @@ div {
     padding: 5px;
     margin: 0px 0px;
     width: 100%;
-    height: 25%;
+    height: 15%;
 }
 
 .btn {
@@ -90,7 +91,7 @@ div {
     background-color: whitesmoke;
     border: inset 5px goldenrod;
     border-radius: 5px;
-    margin: 10px 0px;
+    margin: 5px 0px;
     padding: 5px;
     width: 100%;
     height: 50%;
@@ -105,17 +106,30 @@ table {
     width: 100%;
     height: 100%;
 }
-table,td {
-    border: 1px solid black;
-    text-align: center;
-}
-th {
-    border: 1px solid black;
+table,td,th {
     text-align: center;
 }
 
+#player-choice, #CPU-choice,
+#player-score, #CPU-score {
+    width: 50%;
+    height: 10px;
+}
+
+
 #final {
-    text-align: left;
+    text-align: center;
     padding: 0px 10px;
     font-weight: bold;
+}
+
+#reset {
+    width: 100%;
+    color: red;
+    border: inset 5px red;
+}
+#reset:active {
+    background-color: red;
+    color: white;
+    border: inset 5px white;
 }
