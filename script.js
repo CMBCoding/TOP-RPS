@@ -51,48 +51,40 @@ function playGame() {
     if (round < 5) {    
     playRound();
     function playRound(humanChoice, computerChoice) {
-    computerChoice = getComputerChoice();
-    humanChoice = choice;
-    if (humanChoice === computerChoice) {
-            outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`
-            final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
-            return round++;
-        } else if (
-            (humanChoice === "rock" & computerChoice === "paper") || 
-            (humanChoice === "scissors" & computerChoice === "rock") ||
-            (humanChoice === "paper" & computerChoice === "scissors")
-        ) {
-            computerScore += 1
-            outcome.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
-            CPUPoints.innerText = `CPU score: ${computerScore}`;
-            final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
-            return round++ && computerScore;
-        } else if (
-            (computerChoice === "rock" & humanChoice === "paper") || 
-            (computerChoice === "scissors" & humanChoice === "rock") ||
-            (computerChoice === "paper" & humanChoice === "scissors")
-        ) {
-            humanScore += 1
-            playerPoints.innerText = `Player score: ${humanScore}`;
-            outcome.innerText = `You win, ${humanChoice} beats ${computerChoice}!`;
-            final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
-            return round++ & humanScore;
+        computerChoice = getComputerChoice();
+        humanChoice = choice;
+        if (humanChoice === computerChoice) {
+                outcome.innerText = `Draw, ${humanChoice} and ${computerChoice}.`
+                final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
+                return round++;
+            } else if (
+                (humanChoice === "rock" & computerChoice === "paper") || 
+                (humanChoice === "scissors" & computerChoice === "rock") ||
+                (humanChoice === "paper" & computerChoice === "scissors")
+            ) {
+                computerScore += 1
+                outcome.innerText = `You lose, ${computerChoice} beats ${humanChoice}!`;
+                CPUPoints.innerText = `CPU score: ${computerScore}`;
+                final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
+                return round++ && computerScore;
+            } else if (
+                (computerChoice === "rock" & humanChoice === "paper") || 
+                (computerChoice === "scissors" & humanChoice === "rock") ||
+                (computerChoice === "paper" & humanChoice === "scissors")
+            ) {
+                humanScore += 1
+                playerPoints.innerText = `Player score: ${humanScore}`;
+                outcome.innerText = `You win, ${humanChoice} beats ${computerChoice}!`;
+                final.innerText = `You're on round ${round}. The best out of 5 rounds wins.`;
+                return round++ & humanScore;
 
-        }
-    if (round === 5) {
-        if (humanScore > computerScore) {
-            final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
-        } else if (humanScore < computerScore) {
-            final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
-        } else {
-            final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
-        }
-        }
-}
+            
+            }
+    }
     } else if (round === 5)
-        if (humanScore > computerScore) {
+        if (humanScore > computerScore ) {
             final.innerText = `You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`;
-        } else if (humanScore < computerScore) {
+        } else if (computerScore > humanScore) {
             final.innerText = `You've Lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`
         } else {
             final.innerText = `It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`;
