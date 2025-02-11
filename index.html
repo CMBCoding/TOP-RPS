@@ -3,123 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Rock, Paper, Scissors</title>
 </head>
-<script>
+<body id="body">
+    <h1 id="title">Rock, Paper, Scissors</h1>
+    <div id="box">
+        <div id="panel">
+            <button id="rock" class="btn" data-choice="rock">Rock</button>
+            <button id="paper" class="btn" data-choice="paper">Paper</button>
+            <button id="scissors" class="btn" data-choice="scissors">Scissors</button>
+        </div>
 
-    function getComputerChoice() {
-        let result = Math.floor(Math.random() * 3);
-        if (result === 0) {
-            console.log("CPU picks rock.");
-            return "rock";
-        } else if (result === 2) {
-            console.log("CPU picks paper.");
-            return "paper";
-        } else {
-            console.log("CPU picks scissors.");
-            return "scissors";
-        }
-    }
-    function getHumanChoice() {
-        let result = prompt("Please enter 'rock', 'paper', or 'scissors'.");
-        if (result.length === 4) {
-            console.log("You pick rock.");
-            return "rock";
-        } else if (result.length === 5) {
-            console.log("You pick paper.");
-            return "paper";
-        } else if (result.length === 8) {
-            console.log("You pick scissors.");
-            return "scissors";
-        }
-    }
-
-    /*
-        function getHumanChoice() {
-        let result = prompt("Please enter 'Rock', 'Paper', or 'Scissors'.");
-        if (result === "Rock" ||result === "rock") {
-            humanChoice = "rock";
-            console.log("You pick Rock.");
-            return humanChoice;
-        } else if (result === "Paper" || result === "paper") {
-            humanChoice = "paper";
-            console.log("You pick Paper.");
-            return humanChoice;
-        } else if (result === "Scissors" || result === "scissors") {
-            humanChoice = "scissors";
-            console.log("You pick Scissors.");
-            return humanChoice; 
-        }
-    }
-
-    */
-
-    // function playRound(humanChoice, computerChoice) {
-    //     humanChoice = getHumanChoice();
-    //     humanChoice = humanChoice.toLowerCase();
-    //     computerChoice = getComputerChoice();
-    //     if (humanChoice === computerChoice) {
-    //             console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
-    //         } else if (
-    //             (humanChoice === "rock" & computerChoice === "paper") || 
-    //             (humanChoice === "scissors" & computerChoice === "rock") ||
-    //             (humanChoice === "paper" & computerChoice === "scissors")
-    //         ) {
-    //             computerScore = computerScore + 1;
-    //             console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-    //             return `CPU score is: ${computerScore}`;
-    //         } else if (
-    //             (computerChoice === "rock" & humanChoice === "paper") || 
-    //             (computerChoice === "scissors" & humanChoice === "rock") ||
-    //             (computerChoice === "paper" & humanChoice === "scissors")
-    //         ) {
-    //             humanScore = humanScore + 1;
-    //             console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
-    //             return `Your score is: ${humanScore}.`;
-    //         }
-    // }
-
-    function playGame() {
-        let humanScore = 0;
-        let computerScore = 0;
-        for (let i = 0; i < 5; i++) {
-        playRound();
-        function playRound(humanChoice, computerChoice) {
-        humanChoice = getHumanChoice();
-        humanChoice = humanChoice.toLowerCase();
-        computerChoice = getComputerChoice();
-        if (humanChoice === computerChoice) {
-                console.log(`Draw, ${humanChoice} and ${computerChoice}.`)
-            } else if (
-                (humanChoice === "rock" & computerChoice === "paper") || 
-                (humanChoice === "scissors" & computerChoice === "rock") ||
-                (humanChoice === "paper" & computerChoice === "scissors")
-            ) {
-                computerScore = computerScore + 1
-                console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-                return console.log(`CPU score is: ${computerScore}`);
-                return computerScore++;
-            } else if (
-                (computerChoice === "rock" & humanChoice === "paper") || 
-                (computerChoice === "scissors" & humanChoice === "rock") ||
-                (computerChoice === "paper" & humanChoice === "scissors")
-            ) {
-                humanScore = humanScore + 1
-                console.log(`You win, ${humanChoice} beats ${computerChoice}!`)
-                return console.log(`Your score is: ${humanScore}`);
-                return humanScore++;
-            }
-    }
-        }
-        if (humanScore > computerScore) {
-            console.log(`You've won! The final score is You: [${humanScore}] | CPU: [${computerScore}]!`);
-        } else if (humanScore < computerScore) {
-            console.log(`You've lost! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
-        } else {
-            console.log(`It's a draw! The final score is You: [${computerScore}] | CPU: [${humanScore}]!`);
-        }
-    }
-</script>
+        <div id="display">
+            <table>
+                <tr>
+                    <th id="player-score">Player Score: 0</th>
+                    <th id="CPU-score">CPU Score: 0</th>
+                </tr>
+                <tr>
+                    <td id="player-choice"> </td>
+                    <td id="CPU-choice"> </td> 
+                </tr>
+                <tr><th colspan="3">Outcome</th></tr>
+                <tr>
+                    <td id="outcome" colspan="3"> </td>
+                </tr>
+                <tr>
+                    <td id="final" colspan="3">The best out of 5 rounds wins. Are you ready?
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="reset-box">
+            <button id="reset" class="btn">Reset</button>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
 <body>
     
 </body>
